@@ -58,7 +58,7 @@ const page = () => {
         <Button type="submit" className="w-full">Get Metadata</Button>
         </form>:
  
-            <BackgroundGradientAnimation className="h-full">
+            
             <section className="flex justify-center gap-y-5 flex-col flex-center items-center h-full">
             {
                 image&& <Image unoptimized={true} className="w-[200px] rounded-md shadow-xl" src={image} alt="tokenImage" width={300} height={300}/>
@@ -69,9 +69,6 @@ const page = () => {
                 <h1 className="flex justify-center items-center text-lg font-semibold text-green-600">Description:<span className="text-sm dark:text-white text-black">{desc}</span></h1>
                </section>
             </section>
-
-            </BackgroundGradientAnimation>
- 
       }
     
     </section>

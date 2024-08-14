@@ -17,7 +17,7 @@ import { useState } from "react";
 
 const page = () => {
 
-
+  const [tokenLoading,setTOkenLoading]=useState(false)
   const[tokenMintAdress,setTokenMintAdress]=useState("")
   const {publicKey,sendTransaction}=useWallet();
   const {toast}=useToast();
@@ -33,12 +33,14 @@ const page = () => {
   })
 
   const createToken=async()=>{
+    setTOkenLoading(true)
     if(!publicKey||!token.name||!token.symbol||!token.description||!token.decimals||!token.amount||!token.image){
       toast({
         title: "Uh oh! Something went wrong.",
         description: "There are some missing Fields Check Again.",
          variant:"destructive"
       })
+      setTOkenLoading(false)
       return
     }
 
@@ -48,6 +50,7 @@ const page = () => {
         description: "Make Sure the Decimals should be 1-12",
          variant:"destructive"
       })
+      setTOkenLoading(false)
       return
     }
     if(parseInt(token.amount)<=0 ||parseInt(token?.amount)>100){
@@ -56,6 +59,7 @@ const page = () => {
         description: "Make Sure the Amount should be 1-00",
          variant:"destructive"
       })
+      setTOkenLoading(false)
       return
     }
     if(publicKey){
@@ -140,7 +144,7 @@ const sign=await sendTransaction(createTokenTransaction,connection,{
 
 setTokenMintAdress(accountKeypair?.publicKey.toBase58())
 setTokenSign(sign)
-
+setTOkenLoading(false)
  } catch (error) {
   console.log(error)
  }
@@ -149,6 +153,7 @@ setTokenSign(sign)
   }
 
   const UploadImagePinata=async(file:File)=>{
+    
     if(file){
       try {
         const formData=new FormData()
@@ -277,7 +282,14 @@ const[loading,setLoading]=useState(false)
      
      <Button  onClick={()=>createToken()}>Create Token</Button>
      {
-      tokenMintAdress&&<Link  className="text-blue-500 font-semibold" href={`https://explorer.solana.com/tx/${tokenMintAdress}?cluster=devnet`}>Check Here</Link>
+      <div>
+        {
+          tokenLoading?<div>
+          <ShipWheelIcon className="w-28 h-28 animate-spin"/>
+         </div>:tokenMintAdress&&<Link  className="text-blue-500 font-semibold" href={`https://explorer.solana.com/address/${tokenMintAdress}?cluster=devnet`}>Check Here</Link>
+        }
+      </div>
+      
      }
 
      </>

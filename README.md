@@ -1,7 +1,7 @@
 # 100xMint-Lab
 
 100xMint-Lab is a token creation application for the Solana blockchain, developed by Harkirat Singh as part of Week 4 of Cohort 3.0. This app enables users to create, mint, and burn tokens while efficiently managing their metadata.
-
+ 
 Features:
 • Token Creation: Create new tokens on the Solana blockchain with ease.
 • Minting: Mint new tokens with customizable properties.

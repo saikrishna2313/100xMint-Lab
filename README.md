@@ -1,20 +1,3 @@
-# 100xMint-Lab
+100xMint-Lab is a robust token creation application designed for the Solana blockchain, crafted by Harkirat Singh during Week 4 of Cohort 3.0. This innovative platform streamlines the process of creating, minting, and burning tokens while offering efficient management of metadata. Users can easily generate new tokens on the Solana blockchain, mint them with customizable properties, and control their supply by burning tokens as needed. The application also facilitates comprehensive metadata management through Metaplex and enables seamless image hosting via Pinata Cloud.
 
-100xMint-Lab is a token creation application for the Solana blockchain, developed by Harkirat Singh as part of Week 4 of Cohort 3.0. This app enables users to create, mint, and burn tokens while efficiently managing their metadata.
-
-Features:
-• Token Creation: Create new tokens on the Solana blockchain with ease.
-• Minting: Mint new tokens with customizable properties.
-• Burning: Manage token supply by burning existing tokens.
-• Metadata Management: Read and manage token metadata using Metaplex.
-• Image Hosting: Upload and host token images via Pinata Cloud.
-
-Technologies Used:
-• Solana: Blockchain platform for token management.
-• Metaplex: Handles and reads token metadata.
-• Pinata Cloud: Manages token image uploads and storage.
-• Next.js: React framework for the user interface.
-• Tailwind CSS: Utility-first CSS framework for styling.
-• ShadCN: UI component library for responsive and accessible interfaces.
-• TypeScript: Enhances code quality through static type checking.
-• web3.js: JavaScript library for Solana blockchain interaction.
+The application leverages a suite of modern technologies to deliver its functionality. Solana serves as the underlying blockchain platform, while Metaplex handles the token metadata management. Pinata Cloud is utilized for uploading and storing token images. The user interface is built with Next.js, a React framework, and styled with Tailwind CSS, a utility-first CSS framework. ShadCN is employed for responsive and accessible UI components, and TypeScript is used to enhance code quality through static type checking. Additionally, web3.js, a JavaScript library, enables interaction with the Solana blockchain, ensuring a smooth and efficient user experience.

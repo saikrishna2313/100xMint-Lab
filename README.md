@@ -1,36 +1,18 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+100xMint-Lab
+100xMint-Lab is a token creation application for the Solana blockchain, developed as part of Week 4 of Cohort 3.0 by Harkirat Singh. This app allows users to create, mint, and burn tokens while managing their metadata efficiently.
 
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Features
+Token Creation: Easily create new tokens on the Solana blockchain.
+Minting: Mint new tokens with custom properties.
+Burning: Burn existing tokens to manage supply.
+Metadata Management: Read and manage token metadata using Metaplex.
+Image Hosting: Upload and host token images with Pinata Cloud.
+Technologies Used
+Solana: Blockchain platform for managing tokens.
+Metaplex: For handling and reading token metadata.
+Pinata Cloud: To upload and manage images associated with tokens.
+Next.js: React framework for building the user interface.
+Tailwind CSS: Utility-first CSS framework for styling.
+ShadCN: UI component library for building responsive and accessible interfaces.
+TypeScript: Provides static type checking to enhance code quality.
+web3.js: JavaScript library for interacting with the Solana blockchain.

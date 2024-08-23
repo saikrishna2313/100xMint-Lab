@@ -3,7 +3,7 @@
 import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams-with-collision"
 import { Button } from "@/components/ui/button"
 
-import { Spotlight } from "@/components/ui/spotlight"
+
 
 import { useToast } from "@/components/ui/use-toast"
 

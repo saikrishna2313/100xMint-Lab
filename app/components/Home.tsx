@@ -2,11 +2,11 @@
 
 import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams-with-collision"
 import { Button } from "@/components/ui/button"
-import { CardSpotlight } from "@/components/ui/card-spotlight"
+
 import { Spotlight } from "@/components/ui/spotlight"
 
 import { useToast } from "@/components/ui/use-toast"
-import { Vortex } from "@/components/ui/vortex"
+
 
 import { useWallet } from "@solana/wallet-adapter-react"
 

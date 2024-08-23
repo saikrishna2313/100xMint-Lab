@@ -1,10 +1,11 @@
 "use client"
 
 import { Button } from "@/components/ui/button";
+import { Cover } from "@/components/ui/cover";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/components/ui/use-toast";
-import { createCreateMetadataAccountV3Instruction, createMintInstruction, createUpdateMetadataAccountInstruction, PROGRAM_ID, updateMetadataAccountArgsV2Beet, updateMetadataAccountV2InstructionDiscriminator } from "@metaplex-foundation/mpl-token-metadata";
-import { createAssociatedTokenAccountInstruction, createInitializeAccountInstruction, createInitializeMint2Instruction, createInitializeMintInstruction, createMintToInstruction, getAccountLenForMint, getAssociatedTokenAddress, getAssociatedTokenAddressSync, getMinimumBalanceForRentExemptMint, getMint, MINT_SIZE, TOKEN_PROGRAM_ID } from "@solana/spl-token";
+import { createCreateMetadataAccountV3Instruction, PROGRAM_ID, } from "@metaplex-foundation/mpl-token-metadata";
+import { createAssociatedTokenAccountInstruction, createInitializeMintInstruction, createMintToInstruction, getAccountLenForMint, getAssociatedTokenAddress, getAssociatedTokenAddressSync, getMinimumBalanceForRentExemptMint, getMint, MINT_SIZE, TOKEN_PROGRAM_ID } from "@solana/spl-token";
 import { useWallet } from "@solana/wallet-adapter-react";
 import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 import { clusterApiUrl, Connection, Keypair, PublicKey, SystemProgram, Transaction } from "@solana/web3.js";
@@ -21,7 +22,7 @@ const page = () => {
   const[tokenMintAdress,setTokenMintAdress]=useState("")
   const {publicKey,sendTransaction}=useWallet();
   const {toast}=useToast();
-  const [tokenSign,setTokenSign]=useState("")
+
   const connection=new Connection(clusterApiUrl("devnet"))
   const [token,setToken]=useState({
     name:"",
@@ -143,7 +144,7 @@ const sign=await sendTransaction(createTokenTransaction,connection,{
 )
 
 setTokenMintAdress(accountKeypair?.publicKey.toBase58())
-setTokenSign(sign)
+
 setTOkenLoading(false)
  } catch (error) {
   console.log(error)
@@ -237,8 +238,9 @@ const[loading,setLoading]=useState(false)
    }
   return (
     <section className="flex max-sm:px-3 min-h-screen justify-center items-center flex-col gap-y-3 px-20 py-5">
-        <Image alt="burn" className="w-[300px] my-5 animate-pulse rounded-md shadow-xl" src={'https://www.criptofacil.com/wp-content/uploads/2023/12/inovacao-solana.jpg'} width={300} height={300} />
-
+<h1 className="text-4xl md:text-4xl lg:text-6xl font-semibold max-w-7xl mx-auto text-center mt-6 relative z-20 py-6 bg-clip-text text-transparent bg-gradient-to-b from-neutral-800 via-neutral-700 to-neutral-700 dark:from-neutral-800 dark:via-white dark:to-white">
+        <Cover>Create Your Token</Cover>
+      </h1>
       {
         !publicKey?<section>
         <Image className="w-[350px] my-3 rounded-xl shadow-xl" unoptimized={true} quality={100} alt="wallet" src={"https://moralis.io/wp-content/uploads/2023/01/Illustrative-Solana-Wallet-Image-1024x475.png"} width={150} height={150}/>

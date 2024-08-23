@@ -5,8 +5,8 @@ import {
   PublicKey,
   Transaction,
 } from "@solana/web3.js";
-import { createBurnInstruction, createMintToInstruction,getAccount, getAssociatedTokenAddress, getMint, getMintCloseAuthority, getTokenMetadata } from "@solana/spl-token";
-import { use, useState } from "react";
+import { createBurnInstruction,getAccount, getAssociatedTokenAddress, getMint, getMintCloseAuthority, getTokenMetadata } from "@solana/spl-token";
+import {useState } from "react";
 import { useWallet } from "@solana/wallet-adapter-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -14,43 +14,53 @@ import { useToast } from "@/components/ui/use-toast";
 import Link from "next/link";
 import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 import Image from "next/image";
+import { Cover } from "@/components/ui/cover";
 
 const page = () => {
   const [mint, setMint] = useState("");
   const { publicKey, sendTransaction } = useWallet();
   const [tokenAccountAddress, setTokenAccoutAdress] = useState("");
   const [noOfToken, setNofTokens] = useState("");
-  const [tokenssSign, setTokenSign] = useState("");
+
   const connection = new Connection(clusterApiUrl("devnet"));
   const [tokenAccountBalance,setTokenAccountBalance]=useState<bigint>()
   const [decimals,setDecimals]=useState<number>()
   const {toast}=useToast();
   const getTokenAccountt=async()=>{
-    if(publicKey){
-      const tokenAd=(await getAssociatedTokenAddress(new PublicKey(mint),publicKey)).toBase58()
-    if(!tokenAd){
+  
+    try {
+      if(publicKey){
+        const tokenAd=(await getAssociatedTokenAddress(new PublicKey(mint),publicKey)).toBase58()
+      if(!tokenAd){
+        toast({
+          title: "No token Account Found",
+          description: "There is no token account found with this MINT and Your Public Key",
+           variant:"destructive"
+        })
+        return;
+    
+      }
+      const tokenBalace=await getAccount(connection,new PublicKey(tokenAd))
+      setTokenAccountBalance(tokenBalace?.amount)
+      const MINT=await getMint(connection,new PublicKey(mint))
+    if(!MINT){
+      toast({
+        title: "Check Mint Address Again",
+        description: "Wrong Mint Adress",
+         variant:"destructive"
+      })
+      return;
+    }
+    const dec=MINT.decimals;
+    setDecimals(dec)
+      setTokenAccoutAdress(tokenAd);
+      }
+    } catch (error) {
       toast({
         title: "No token Account Found",
         description: "There is no token account found with this MINT and Your Public Key",
          variant:"destructive"
       })
-      return;
-  
-    }
-    const tokenBalace=await getAccount(connection,new PublicKey(tokenAd))
-    setTokenAccountBalance(tokenBalace?.amount)
-    const MINT=await getMint(connection,new PublicKey(mint))
-  if(!MINT){
-    toast({
-      title: "Check Mint Address Again",
-      description: "Wrong Mint Adress",
-       variant:"destructive"
-    })
-    return;
-  }
-  const dec=MINT.decimals;
-  setDecimals(dec)
-    setTokenAccoutAdress(tokenAd);
     }
     
   }
@@ -107,7 +117,7 @@ const TOKEN_DECIMALS=MINT?.decimals
      
       const signx = await sendTransaction(transaction, connection);
       getTokenAccountt()
-      setTokenSign(signx);
+
       
       toast({
         title: `You have burnt ${noOfToken} now`,
@@ -120,7 +130,9 @@ const TOKEN_DECIMALS=MINT?.decimals
   };
   return (
     <section className="h-screen max-sm:px-3 px-20 w-full flex-col flex justify-center items-center">
-      <Image alt="burn" className="w-[300px] my-5 animate-pulse rounded-md shadow-xl" src={'https://sol-burn.com/images/212d0d67e1955c53299e92d21dda91c2.jpg'} width={300} height={300} />
+     <h1 className="text-4xl md:text-4xl lg:text-6xl font-semibold max-w-7xl mx-auto text-center mt-6 relative z-20 py-6 bg-clip-text text-transparent bg-gradient-to-b from-neutral-800 via-neutral-700 to-neutral-700 dark:from-neutral-800 dark:via-white dark:to-white">
+        <Cover>Burn Your Tokens</Cover>
+      </h1>
       {
         tokenAccountBalance&&decimals&&
         <h1 className="my-4 ">Your Total Tokens:{Number(tokenAccountBalance)/10**decimals}</h1>

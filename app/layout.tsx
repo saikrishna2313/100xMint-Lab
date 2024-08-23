@@ -10,7 +10,7 @@ import Footer from "./components/Footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Token-Play",
+  title: "100xMintLab",
   description: "Create Tokens on Solana",
 };
 

@@ -14,22 +14,24 @@ import { useToast } from "@/components/ui/use-toast";
 import Link from "next/link";
 import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 import Image from "next/image";
+import { Cover } from "@/components/ui/cover";
 
 const page = () => {
   const [mint, setMint] = useState("");
   const { publicKey, sendTransaction } = useWallet();
   const [tokenAccountAddress, setTokenAccoutAdress] = useState("");
   const [noOfToken, setNofTokens] = useState("");
-  const [tokenssSign, setTokenSign] = useState("");
   const connection = new Connection(clusterApiUrl("devnet"));
   const {toast}=useToast();
   const getTokenAccount=async()=>{
+   
+   try {
     if(publicKey){
       const tokenAd=(await getAssociatedTokenAddress(new PublicKey(mint),publicKey)).toBase58()
     if(!tokenAd){
       toast({
         title: "No token Account Found",
-        description: "There is no token account found with this MINT and Your Public Key",
+        description: "Check Mint Address Again",
          variant:"destructive"
       })
       return;
@@ -37,6 +39,14 @@ const page = () => {
     }
     setTokenAccoutAdress(tokenAd);
     }
+   } catch (error) {
+    toast({
+      title: "No token Account Found",
+      description: "There is no token account found with this MINT and Your Public Key",
+       variant:"destructive"
+    })
+ 
+   }
     
   }
  
@@ -90,7 +100,6 @@ const TOKEN_DECIMALS=MINT?.decimals
       );
      
       const signx = await sendTransaction(transaction, connection);
-      setTokenSign(signx);
       toast({
         title: `You have minted ${noOfToken} now`,
         description: <Link  className="text-blue-500 font-semibold" href={`https://explorer.solana.com/tx/${signx}?cluster=devnet`}>Check Here</Link>,
@@ -100,7 +109,9 @@ const TOKEN_DECIMALS=MINT?.decimals
   };
   return (
     <section className="h-screen max-sm:px-3 flex-col px-20 w-full flex justify-center items-center">
-       <Image alt="burn" className="w-[350px] my-5 animate-pulse rounded-md shadow-xl" src={'https://mudrex.com/learn/wp-content/uploads/2022/11/Blog-72-1-1440x720.png'} width={300} height={300} />
+      <h1 className="text-4xl md:text-4xl lg:text-6xl font-semibold max-w-7xl mx-auto text-center mt-6 relative z-20 py-6 bg-clip-text text-transparent bg-gradient-to-b from-neutral-800 via-neutral-700 to-neutral-700 dark:from-neutral-800 dark:via-white dark:to-white">
+        <Cover>Mint More Tokens</Cover>
+      </h1>
      {
       publicKey? <form 
       onSubmit={(e)=>{

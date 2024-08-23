@@ -11,8 +11,8 @@ const Footer = () => {
      
      <div className='flex justify-center items-center gap-x-4'>
      <p className="text-lg max-sm:text-sm md:text-xl font-semibold max-sm:hidden">100xMint-Lab</p>
-     <Link href="https://x.com/varma_100x"><Twitter /></Link>
-     <Link href="https://github.com/saikrishna2313"><Github /></Link>
+     <Link className='flex justify-center items-center gap-x-1' href="https://x.com/the_varmax"><Twitter /> Varma</Link>
+     <Link href="https://github.com/saikrishna2313/100xMint-Lab"><Github /></Link>
     
      </div>
         <p className="text-xs md:text-sm mt-2">&copy; {currentYear} 100xMint-Lab. All rights reserved.</p>

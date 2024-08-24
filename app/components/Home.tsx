@@ -93,7 +93,7 @@ const Home = () => {
             <Link href={"/burn-tokens"}>Burn Token</Link>
           </button>
           <button className="px-4 py-2 bg-yellow-600 hover:bg-green-700 transition duration-200 rounded-lg text-white shadow-[0px_2px_0px_0px_#FFFFFF40_inset]">
-            <Link href={"/token-metadat"}>Metadata</Link>
+            <Link href={"/token-metadata"}>Metadata</Link>
           </button>
         </div>
         <Button className="bg-gradient-to-r my-4 text-white from-pink-500 via-purple-700 to-green-400" onClick={AirDrop}>AirDrop SOL</Button>

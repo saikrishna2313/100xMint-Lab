@@ -1,3 +1,1 @@
-100xMint-Lab is a robust token creation application designed for the Solana blockchain, crafted by Harkirat Singh during Week 4 of Cohort 3.0. This innovative platform streamlines the process of creating, minting, and burning tokens while offering efficient management of metadata. Users can easily generate new tokens on the Solana blockchain, mint them with customizable properties, and control their supply by burning tokens as needed. The application also facilitates comprehensive metadata management through Metaplex and enables seamless image hosting via Pinata Cloud.
-h the Solana blockchain, ensuring a smooth and efficient user experience.
 
